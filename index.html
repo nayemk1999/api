@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API WebSite</title>
+</head>
+
+<body>
+    <h2> JSON API WebSite</h2>
+    <ul id="user-container">
+
+    </ul>
+
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => displayNames(json))
+
+            function displayNames(user){
+                const userNames = user.map(user => user.username);
+                const ul = document.getElementById("user-container");
+                
+                for (let i = 0; i < userNames.length; i++) {
+                    const user = userNames[i];
+                    const li = document.createElement("li");
+                    li.innerText = user;
+                    ul.appendChild(li); 
+                    
+                }
+                console.log(userNames);
+            }
+
+    </script>
+</body>
+
+</html>
